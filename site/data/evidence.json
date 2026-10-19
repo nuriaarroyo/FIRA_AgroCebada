@@ -1,0 +1,152 @@
+{
+  "schema_version": 1,
+  "units": "RMSE t/ha; expert_weight: fraction from 0 to 1",
+  "source_files": [
+    "results/core4_relevance/v1/metrics.csv",
+    "results/reference26_component_evidence/v1/architecture_metrics.csv",
+    "results/reference26_component_evidence/v1/component_weights.csv"
+  ],
+  "scope": "Retrospective exploratory analysis on the same 138 labeled parcels; not independent validation or the 59 unknown yields.",
+  "protocols": [
+    {
+      "id": "random",
+      "core4_ablations": [
+        {
+          "id": "FULL4",
+          "label": "C-T3 completo",
+          "rmse": 0.511581804125115
+        },
+        {
+          "id": "DROP_compact_precip_total",
+          "label": "Sin lluvia total",
+          "rmse": 0.5341785955226197
+        },
+        {
+          "id": "DROP_compact_early_fraction",
+          "label": "Sin fracción temprana",
+          "rmse": 0.5664718730318692
+        },
+        {
+          "id": "DROP_compact_concentration_hhi",
+          "label": "Sin concentración HHI",
+          "rmse": 0.5144568622283924
+        },
+        {
+          "id": "DROP_S2_ndvi_month_05",
+          "label": "Sin NDVI de mayo",
+          "rmse": 0.5385927143226414
+        }
+      ],
+      "reference26_r3": {
+        "without_r3": 0.4865384596584804,
+        "with_r3": 0.4747774501574054
+      },
+      "expert_weight": 0.7197032603531784
+    },
+    {
+      "id": "climate_profile",
+      "core4_ablations": [
+        {
+          "id": "FULL4",
+          "label": "C-T3 completo",
+          "rmse": 0.5206039207674066
+        },
+        {
+          "id": "DROP_compact_precip_total",
+          "label": "Sin lluvia total",
+          "rmse": 0.5443889335138778
+        },
+        {
+          "id": "DROP_compact_early_fraction",
+          "label": "Sin fracción temprana",
+          "rmse": 0.6016704222739467
+        },
+        {
+          "id": "DROP_compact_concentration_hhi",
+          "label": "Sin concentración HHI",
+          "rmse": 0.5256957019486279
+        },
+        {
+          "id": "DROP_S2_ndvi_month_05",
+          "label": "Sin NDVI de mayo",
+          "rmse": 0.5447052079816015
+        }
+      ],
+      "reference26_r3": {
+        "without_r3": 0.4913093176101835,
+        "with_r3": 0.4774452354174899
+      },
+      "expert_weight": 0.7044534646419653
+    },
+    {
+      "id": "municipality",
+      "core4_ablations": [
+        {
+          "id": "FULL4",
+          "label": "C-T3 completo",
+          "rmse": 0.5812589187741983
+        },
+        {
+          "id": "DROP_compact_precip_total",
+          "label": "Sin lluvia total",
+          "rmse": 0.6767561951809694
+        },
+        {
+          "id": "DROP_compact_early_fraction",
+          "label": "Sin fracción temprana",
+          "rmse": 0.7329700140402127
+        },
+        {
+          "id": "DROP_compact_concentration_hhi",
+          "label": "Sin concentración HHI",
+          "rmse": 0.6011204225222302
+        },
+        {
+          "id": "DROP_S2_ndvi_month_05",
+          "label": "Sin NDVI de mayo",
+          "rmse": 0.6001503895208024
+        }
+      ],
+      "reference26_r3": {
+        "without_r3": 0.583487035261614,
+        "with_r3": 0.5752208199125606
+      },
+      "expert_weight": 0.0989589140586745
+    },
+    {
+      "id": "spatial",
+      "core4_ablations": [
+        {
+          "id": "FULL4",
+          "label": "C-T3 completo",
+          "rmse": 0.6787780469129576
+        },
+        {
+          "id": "DROP_compact_precip_total",
+          "label": "Sin lluvia total",
+          "rmse": 1.024773824351345
+        },
+        {
+          "id": "DROP_compact_early_fraction",
+          "label": "Sin fracción temprana",
+          "rmse": 0.6971403543066916
+        },
+        {
+          "id": "DROP_compact_concentration_hhi",
+          "label": "Sin concentración HHI",
+          "rmse": 0.5595812361091929
+        },
+        {
+          "id": "DROP_S2_ndvi_month_05",
+          "label": "Sin NDVI de mayo",
+          "rmse": 0.766144097621804
+        }
+      ],
+      "reference26_r3": {
+        "without_r3": 0.6893651455246446,
+        "with_r3": 0.6333467976739242
+      },
+      "expert_weight": 0.4815985395446041
+    }
+  ]
+}

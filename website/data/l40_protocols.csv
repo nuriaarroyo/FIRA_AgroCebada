@@ -1,0 +1,5 @@
+protocol,rmse,r2
+random,0.4930,0.6619
+climate_profile,0.5031,0.6481
+municipality,0.7602,0.1964
+spatial,0.9794,-0.3337

@@ -1,0 +1,217 @@
+{
+  "schema_version": 1,
+  "protocols": [
+    {
+      "id": "random",
+      "label": "Aleatoria",
+      "reference26": 0.47477745015740547,
+      "without_hhi": 0.4747738492644801,
+      "delta": -0.0000036008929253927846,
+      "ci95": [
+        -0.0033517457281441133,
+        0.0016211795306278114
+      ],
+      "p_holm": 1,
+      "groups": 43
+    },
+    {
+      "id": "climate_profile",
+      "label": "Por perfil climático",
+      "reference26": 0.47744523541748995,
+      "without_hhi": 0.47432292981492935,
+      "delta": -0.0031223056025606044,
+      "ci95": [
+        -0.011901440726764752,
+        0.0009271541801067943
+      ],
+      "p_holm": 0.7537623118844058,
+      "groups": 43
+    },
+    {
+      "id": "municipality",
+      "label": "Por municipio",
+      "reference26": 0.5752208199125606,
+      "without_hhi": 0.5981970649272209,
+      "delta": 0.022976245014660335,
+      "ci95": [
+        -0.07327178276661515,
+        0.07050071705644759
+      ],
+      "p_holm": 1,
+      "groups": 9
+    },
+    {
+      "id": "spatial",
+      "label": "Por bloques espaciales",
+      "reference26": 0.6333467976739242,
+      "without_hhi": 0.5328248825402475,
+      "delta": -0.1005219151336767,
+      "ci95": [
+        -0.26080589156667633,
+        0.029303469356192213
+      ],
+      "p_holm": 1,
+      "groups": 5
+    }
+  ],
+  "associations": [
+    {
+      "id": "compact_precip_total",
+      "label": "Lluvia acumulada",
+      "coefficient_per_SD": -0.2594910561163871,
+      "p_holm": 0.00030639521375217806
+    },
+    {
+      "id": "compact_early_fraction",
+      "label": "Proporción de lluvia temprana",
+      "coefficient_per_SD": -0.33682228819627996,
+      "p_holm": 0.009503932244473975
+    },
+    {
+      "id": "compact_concentration_hhi",
+      "label": "Concentración mensual de la lluvia",
+      "coefficient_per_SD": -0.10244963152012704,
+      "p_holm": 0.20244329623936924
+    },
+    {
+      "id": "S2_ndvi_month_05",
+      "label": "Vegetación en mayo (NDVI)",
+      "coefficient_per_SD": 0.20576684846482668,
+      "p_holm": 0.00004509183311943916
+    }
+  ],
+  "architecture_tests": {
+    "architecture": {
+      "tests": 412,
+      "significant_holm": 0
+    },
+    "base_distribution": {
+      "tests": 332,
+      "significant_holm": 0
+    },
+    "indicator_neighborhoods": {
+      "tests": 208,
+      "significant_holm": 0
+    }
+  },
+  "support": {
+    "n": 59,
+    "any_flag": 11,
+    "missing_r3": 8,
+    "outside_geography": 1,
+    "outside_climate": 2,
+    "outside_local": 2
+  },
+  "intervals": [
+    {
+      "model": "Reference26",
+      "level": 0.8,
+      "coverage": 0.8043478260869564,
+      "width": 1.1863863473040506,
+      "finite_fraction": 1
+    },
+    {
+      "model": "Reference26",
+      "level": 0.9,
+      "coverage": 0.9289855072463767,
+      "width": 2.0846486373733724,
+      "finite_fraction": 1
+    },
+    {
+      "model": "Compact14",
+      "level": 0.8,
+      "coverage": 0.805072463768116,
+      "width": 1.18016708872834,
+      "finite_fraction": 1
+    },
+    {
+      "model": "Compact14",
+      "level": 0.9,
+      "coverage": 0.9297101449275363,
+      "width": 2.120478976995835,
+      "finite_fraction": 1
+    }
+  ],
+  "source_files": [
+    "results/four_final_checks/v1/sensitivity_paired_tests.csv",
+    "results/four_final_checks/v1/sensitivity_metrics.csv",
+    "results/four_final_checks/v1/interval_metrics.csv",
+    "results/four_final_checks/v1/support_summary.csv",
+    "results/core4_relevance/v1/association_tests.csv",
+    "results/core4_relevance/v1/association_coefficients.csv",
+    "results/core4_relevance/v1/existing_26_vs_CT3_tests.csv",
+    "results/reference26_component_evidence/v1/audit.json",
+    "results/core4_relevance/v1/audit.json"
+  ],
+  "limitations": "Pruebas exploratorias sobre 138 etiquetas reutilizadas. Holm corrige familias especificadas, no la búsqueda histórica. Sin rendimiento observado para las 59 parcelas.",
+  "core4_audit": {
+    "n_parcels": 138,
+    "n_profiles": 43,
+    "n_outer_folds": 65,
+    "ablation_rows": 12558,
+    "full4_matches_original_max_difference": 0,
+    "new_26_fits": 0,
+    "new_final_fits": 0,
+    "PRED_read": false,
+    "association_tests": 13,
+    "prediction_tests": 24,
+    "association_holm_significant": 12,
+    "ablation_holm_significant": 4,
+    "elapsed_seconds": 3.626208100002259
+  },
+  "support_states": [
+    {
+      "state": "Hidalgo",
+      "n": 15,
+      "any_flag": 5,
+      "missing_r3": 4,
+      "outside_geography": 1,
+      "outside_climate": 0,
+      "outside_local": 0
+    },
+    {
+      "state": "Puebla",
+      "n": 29,
+      "any_flag": 4,
+      "missing_r3": 4,
+      "outside_geography": 0,
+      "outside_climate": 0,
+      "outside_local": 0
+    },
+    {
+      "state": "Tlaxcala",
+      "n": 15,
+      "any_flag": 2,
+      "missing_r3": 0,
+      "outside_geography": 0,
+      "outside_climate": 2,
+      "outside_local": 2
+    }
+  ],
+  "reference26_vs_ct3": [
+    {
+      "protocol": "climate_profile",
+      "delta_rmse": 0.0431586853499166,
+      "p_holm": 0.0787460626968651,
+      "clusters": 43
+    },
+    {
+      "protocol": "municipality",
+      "delta_rmse": 0.0060380988616378,
+      "p_holm": 1,
+      "clusters": 9
+    },
+    {
+      "protocol": "random",
+      "delta_rmse": 0.0368043539677094,
+      "p_holm": 0.0252987350632468,
+      "clusters": 43
+    },
+    {
+      "protocol": "spatial",
+      "delta_rmse": 0.0454312492390334,
+      "p_holm": 1,
+      "clusters": 5
+    }
+  ]
+}

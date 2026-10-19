@@ -1,5 +1,8 @@
 # AgroCebada FIRA 2026 · fira_nuria
 
+**Sitio de divulgación del fork:** [Historia de Reference26](site/) · [fuentes y auditoría](site/README.md). El sitio presenta métricas agregadas; GitHub Pages requiere configuración en Settings → Pages. La investigación upstream contiene nuevos [contrastes de las cuatro señales C-T3](results/core4_relevance/v1/README.md) y [evidencia de los componentes Reference26](results/reference26_component_evidence/v1/README.md).
+
+
 **El propósito del proyecto es desarrollar y validar un modelo que estime el rendimiento de cebada, en toneladas por hectárea, para las parcelas sin rendimiento conocido del Reto AgroCebada FIRA 2026.** La investigación de variables y algoritmos sirve para elegir y explicar esa solución; no es un objetivo independiente ni una búsqueda del menor error sin considerar su uso.
 
 Trabajamos con **197 parcelas de Hidalgo, Puebla y Tlaxcala**, ciclo 2025: **138 con rendimiento conocido** para desarrollo y validación, y **59 por estimar**. Integramos señales climáticas, satelitales, históricas, topográficas y cartográficas. El rendimiento de las 59 no está disponible: el error reportado corresponde a validación de las 138, no al resultado real de la entrega.
@@ -75,8 +78,6 @@ La evaluación es exploratoria después de amplia reutilización de las mismas e
 **Relevancia del núcleo C-T3:** [contrastes de asociación y ablaciones reajustadas](results/core4_relevance/v1/README.md). Evidencia exploratoria, con resultados favorables para algunas señales y límites explícitos para HHI; no certifica significancia de las26 entradas.
 
 **Componentes de26:** [evidencia recuperada por función y variable](results/reference26_component_evidence/v1/README.md), con ablaciones existentes, interacciones, dependencias de calibración y límites.
-
-**Cuatro investigaciones de cierre:** [entrega reproducida en instalación limpia, soporte59, intervalos y sensibilidad sin HHI](results/four_final_checks/v1/README.md). Se conservan los champions26/14 y sus estimaciones finales.
 
 ## Cómo leer y reproducir
 

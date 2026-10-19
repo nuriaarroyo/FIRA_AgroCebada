@@ -1,0 +1,111 @@
+{
+  "schema_version": 1,
+  "source": "results/reference26_distribution/v1/descriptive_global_state.csv",
+  "description": "Agregados por estado, observaciones conocidas frente a estimaciones de otras parcelas; las curvas exactas ECDF no se reconstruyen sin predicciones individuales.",
+  "rows": [
+    {
+      "region": "all",
+      "cohort": "Observed138",
+      "n": 138,
+      "mean": 3.9553623188405793,
+      "median": 4.34,
+      "p10": 2.8920000000000003,
+      "q25": 3.2,
+      "q75": 4.55,
+      "p90": 4.842,
+      "minimum": 2,
+      "maximum": 5.59
+    },
+    {
+      "region": "Hidalgo",
+      "cohort": "Observed138",
+      "n": 36,
+      "mean": 3.7624999999999997,
+      "median": 3.5,
+      "p10": 3,
+      "q25": 3.2,
+      "q75": 4.512499999999999,
+      "p90": 4.645,
+      "minimum": 2,
+      "maximum": 4.87
+    },
+    {
+      "region": "Puebla",
+      "cohort": "Observed138",
+      "n": 71,
+      "mean": 4.477323943661971,
+      "median": 4.52,
+      "p10": 3.91,
+      "q25": 4.385,
+      "q75": 4.69,
+      "p90": 5.07,
+      "minimum": 2.15,
+      "maximum": 5.59
+    },
+    {
+      "region": "Tlaxcala",
+      "cohort": "Observed138",
+      "n": 31,
+      "mean": 2.9838709677419355,
+      "median": 3,
+      "p10": 2.5,
+      "q25": 2.5,
+      "q75": 3.25,
+      "p90": 3.5,
+      "minimum": 2.5,
+      "maximum": 3.5
+    },
+    {
+      "region": "all",
+      "cohort": "Predicted59",
+      "n": 59,
+      "mean": 3.956432328667021,
+      "median": 4.348918961801768,
+      "p10": 2.9633605488353743,
+      "q25": 3.1449814186890497,
+      "q75": 4.495850975386498,
+      "p90": 4.66315398895792,
+      "minimum": 2.7597765646792327,
+      "maximum": 4.819618206363738
+    },
+    {
+      "region": "Hidalgo",
+      "cohort": "Predicted59",
+      "n": 15,
+      "mean": 3.877042086494484,
+      "median": 4.302616255298901,
+      "p10": 3.1337674793283683,
+      "q25": 3.1449814186890497,
+      "q75": 4.447728462155107,
+      "p90": 4.53948188401897,
+      "minimum": 3.0802099868337445,
+      "maximum": 4.558494654577901
+    },
+    {
+      "region": "Puebla",
+      "cohort": "Predicted59",
+      "n": 29,
+      "mean": 4.478759843904092,
+      "median": 4.444278350840832,
+      "p10": 4.305710728740221,
+      "q25": 4.34982393634479,
+      "q75": 4.635484195154413,
+      "p90": 4.725606214078795,
+      "minimum": 4.084750089801775,
+      "maximum": 4.819618206363738
+    },
+    {
+      "region": "Tlaxcala",
+      "cohort": "Predicted59",
+      "n": 15,
+      "mean": 3.0259893747145536,
+      "median": 3.0328009456148077,
+      "p10": 2.8429171320997946,
+      "q25": 2.8971293443333144,
+      "q75": 3.148786922908875,
+      "p90": 3.2324547200442315,
+      "minimum": 2.7597765646792327,
+      "maximum": 3.271140667692912
+    }
+  ]
+}

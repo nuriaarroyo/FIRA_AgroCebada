@@ -1,0 +1,121 @@
+/* Native browser MathML and the interactive parcel laboratory use the site theme. */
+.process-explain{padding-top:9px!important;border-top:1px solid var(--rule);color:var(--muted)!important;font-size:12px!important;line-height:1.65!important}
+.math-details{border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);margin:30px 0;padding:10px 0}
+.math-details summary{padding:15px 4px;cursor:pointer;color:var(--forest);font-size:15px;font-weight:740}
+.math-details>p{max-width:850px;font-size:13px;color:var(--muted);margin:5px 4px 20px}
+.math-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin:15px 0 28px}
+.math-item{padding:22px;border:1px solid var(--rule);background:var(--paper);min-width:0}
+.math-item>strong{display:block;font-size:14px;color:var(--forest);margin-bottom:12px}
+.math-item>p{font-size:12px;line-height:1.65;color:var(--muted);margin:9px 0 0}
+.math-scroll{width:100%;overflow-x:auto;padding:9px 4px 15px;scrollbar-width:thin}
+.math-scroll math{font-family:"STIX Two Math","Cambria Math","Latin Modern Math",serif;font-size:1.25rem;white-space:nowrap;color:inherit}
+.math-proof{padding:26px;margin:24px 0 38px}
+.model-formula{background:#1d5043;color:#f3f5e7;border:1px solid #729684}
+.model-formula .math-scroll math{font-size:clamp(1.25rem,2.5vw,1.9rem)}
+.math-label{font-size:11px!important;letter-spacing:.1em!important;font-weight:750!important;color:#dce6ad!important;text-transform:uppercase}
+.math-interpretation{font-style:italic!important;color:#d6e5ce!important;max-width:940px!important;line-height:1.8!important;margin:4px 0 0!important}
+.tech-intro{display:grid;grid-template-columns:1fr 1fr;gap:25px;margin:25px 0 45px}
+.tech-intro article{border-top:3px solid var(--jade);background:#edf2e9;padding:25px}
+.tech-intro span{font-size:10px;color:var(--jade);font-weight:750;letter-spacing:.08em}
+.tech-intro h3{font-size:23px;margin:12px 0}
+.tech-intro p{font-size:13px;line-height:1.8}
+.technical-stages{border-top:1px solid var(--rule)}
+.technical-stage{display:grid;grid-template-columns:46px 1fr;gap:20px;border-bottom:1px solid var(--rule);padding:32px 0}
+.stage-number{font-family:var(--serif);font-size:34px;color:var(--jade)}
+.technical-stage h3{font-size:25px;line-height:1.2;margin:0 0 16px}
+.technical-stage p{font-size:14px;line-height:1.85;max-width:1010px}
+.technical-stage .technical-reading{font-size:12px;color:var(--muted);margin:11px 0}
+.parameter-strip{display:flex;flex-wrap:wrap;gap:0;border:1px solid var(--rule);margin:19px 0;background:#f4f7f0}
+.parameter-strip span{padding:12px 15px;font-size:11px;border-right:1px solid var(--rule);flex:1 1 160px;line-height:1.6}
+.parameter-strip strong{display:block;margin-top:2px;font-size:13px;color:var(--forest)}
+.validation-split{margin-top:30px;background:#e9f1e6;padding:30px}
+.validation-split h3{font-size:25px;margin:0 0 20px}
+.validation-steps{display:grid;grid-template-columns:repeat(2,1fr);gap:12px 30px}
+.validation-steps>div{padding:17px 0;border-top:1px solid #c5d7c4}
+.validation-steps strong{font-size:13px;color:var(--forest)}
+.validation-steps p{font-size:12px;line-height:1.75}
+.loocv-panel{border-top:4px solid var(--jade);background:var(--paper);padding:30px;box-shadow:0 10px 30px rgba(16,55,47,.045)}
+.loocv-head .eyebrow{color:var(--jade)}
+.loocv-head h3{font-size:30px;margin:10px 0}
+.loocv-head p:last-child{font-size:14px;line-height:1.85;max-width:920px}
+.loocv-metrics{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);margin:26px 0;padding:15px 0}
+.loocv-metrics>div{padding:17px 22px;border-right:1px solid var(--rule);display:flex;flex-direction:column;gap:8px}
+.loocv-metrics>div:last-child{border-right:0}
+.loocv-metrics span{color:var(--jade);font-size:11px;text-transform:uppercase;letter-spacing:.06em;font-weight:730}
+.loocv-metrics strong{color:var(--forest);font-size:clamp(29px,3.2vw,45px);letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+.loocv-metrics small{font-size:12px;color:var(--muted)}
+.loocv-reading{display:grid;grid-template-columns:repeat(3,1fr);gap:25px}
+.loocv-reading>div{padding:10px 0;border-top:1px solid var(--rule)}
+.loocv-reading h4{font-size:17px;margin:10px 0}
+.loocv-reading p{font-size:12px;line-height:1.85}
+.relative-scale{margin:24px 0;padding:22px;background:#eaf1e7}
+.relative-scale label{display:block;font-weight:720;font-size:13px}
+.relative-scale input{display:block;width:min(100%,600px);accent-color:var(--jade);margin:19px 0}
+.relative-scale p{font-size:12px;max-width:750px}
+.previous-validation-heading{padding:38px 0 8px}
+.previous-validation-heading h3{font-size:26px}
+.previous-validation-heading p{font-size:13px}
+.prediction-mode{display:flex;gap:10px;flex-wrap:wrap;margin:20px 0 26px}
+.prediction-mode button,.fictional-choice,.own-actions button{border:1px solid var(--rule);background:var(--paper);padding:13px 20px;color:var(--forest);font-weight:730;font-size:13px;cursor:pointer}
+.prediction-mode button.active,.fictional-choice.active,.own-actions button:not(.secondary-cta){background:var(--forest);border-color:var(--forest);color:var(--paper)}
+.prediction-panel{background:var(--paper);padding:30px;border:1px solid var(--rule)}
+.prediction-panel[hidden]{display:none!important}
+.prediction-panel h3{font-size:27px;margin:0 0 16px}
+.prediction-panel>p{font-size:14px;line-height:1.85;max-width:1020px}
+.fictional-presets{display:flex;gap:10px;flex-wrap:wrap;margin:27px 0}
+.fictional-choice{flex:1 1 185px;text-align:left;line-height:1.5}
+.parcel-config{display:grid;grid-template-columns:1.1fr 1fr;gap:28px}
+.parcel-inputs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.parcel-inputs>label{font-size:12px;font-weight:720;display:flex;flex-direction:column;gap:8px}
+.parcel-inputs input:not([type=checkbox]),.parcel-inputs select,.feature-field input{background:#f8fbf4;border:1px solid #b7cabc;color:var(--forest);padding:12px 10px;width:100%;font-family:var(--sans);font-size:15px}
+.parcel-inputs input:focus-visible,.parcel-inputs select:focus-visible,.feature-field input:focus-visible,.prediction-mode button:focus-visible,.fictional-choice:focus-visible{outline:3px solid #a87c30;outline-offset:2px}
+.parcel-inputs>label.parcel-support{grid-column:1/-1;flex-direction:row;align-items:center}
+.parcel-support input{accent-color:var(--jade)}
+.parcel-output{padding:25px;background:var(--forest);color:var(--paper);display:flex;flex-direction:column;gap:10px}
+.parcel-output .output-heading{font-size:11px;text-transform:uppercase;letter-spacing:.08em}
+.parcel-output>strong{font-size:clamp(48px,5vw,71px);font-variant-numeric:tabular-nums;color:#e5efb0;letter-spacing:-.04em}
+.parcel-output small,.parcel-output p{color:#d8e7db;font-size:12px;line-height:1.75}
+.parcel-mixbar{height:17px;display:flex;border-radius:3px;overflow:hidden;margin:9px 0}
+.parcel-mixbar span:first-child{background:#a3b9aa}.parcel-mixbar span:last-child{background:var(--gold)}
+.own-status{display:flex;gap:15px;flex-wrap:wrap;justify-content:space-between;align-items:center;padding:17px;background:#eaf1e7;color:var(--forest);font-size:13px}
+.own-feature-group{margin:13px 0;border:1px solid var(--rule);background:#f4f8f0}
+.own-feature-group summary{cursor:pointer;font-size:15px;padding:17px;font-weight:730;color:var(--forest)}
+.own-feature-group>p{font-size:12px;margin:0 17px 14px;color:var(--muted)}
+.feature-field-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;padding:0 17px 20px}
+.feature-field{display:flex;flex-direction:column;gap:7px;min-width:0}
+.feature-field span{font-size:12px;font-weight:680;color:var(--forest)}
+.feature-field small{font-size:10px;line-height:1.5;color:var(--muted);overflow-wrap:anywhere}
+.feature-field .input-invalid{border:2px solid #b0552e;background:#fff0e9}
+.own-actions{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0}
+.own-actions button:disabled{opacity:.4;cursor:not-allowed}
+.own-actions .secondary-cta{display:block!important;min-width:0}
+@media(max-width:900px){.loocv-reading,.feature-field-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:760px){.math-grid,.tech-intro,.validation-steps,.parcel-config,.loocv-reading{grid-template-columns:1fr}
+.loocv-metrics{grid-template-columns:1fr}.loocv-metrics>div{border-right:0;border-bottom:1px solid var(--rule)}
+.prediction-panel,.loocv-panel{padding:20px}.parameter-strip span{flex-basis:145px}
+}
+@media(max-width:520px){.feature-field-grid,.parcel-inputs{grid-template-columns:1fr}
+.technical-stage{grid-template-columns:28px 1fr;gap:12px}.technical-stage h3{font-size:22px}
+.math-scroll math{font-size:1.05rem}.prediction-mode button{width:100%}
+}
+@media(prefers-reduced-motion:reduce){.fictional-choice,.prediction-mode button{transition:none}}
+/* Live fitted-model connector. No result is shown until the API confirms readiness. */
+.live-inference{margin:28px 0;padding:25px;background:#eaf2e8;border-top:3px solid var(--jade)}
+.live-inference>h3{font-size:24px;margin:7px 0 11px}
+.live-inference>p{font-size:13px;line-height:1.7}
+.live-api-config{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:17px 0}
+.live-api-config label{width:100%;font-size:12px;color:var(--forest);font-weight:690}
+.live-api-config input,.existing-parcel-lookup input{padding:12px;max-width:400px;width:100%;border:1px solid #9bbca1;background:var(--paper);font:inherit}
+.live-api-config button,.live-inference-actions button,.existing-parcel-lookup button{padding:13px 18px;border:0;background:var(--forest);color:#fff;font-weight:680;font-size:12px;cursor:pointer}
+.live-api-config button:disabled,.live-inference-actions button:disabled,.existing-parcel-lookup button:disabled{opacity:.42;cursor:not-allowed}
+#api-status{padding:12px 0;color:var(--forest);border-bottom:1px solid var(--rule)}
+.live-inference-actions{margin-top:24px}
+.live-result{font-size:17px;margin-top:14px;font-variant-numeric:tabular-nums}
+.live-result strong{font-size:32px;color:var(--forest)}
+.existing-parcel-lookup{border-top:1px solid var(--rule);margin:30px 0 0;padding-top:20px}
+.existing-parcel-lookup h4{font-size:17px;margin-bottom:9px}
+.existing-parcel-lookup p{font-size:12px;line-height:1.7}
+.existing-parcel-lookup label{display:block;font-size:12px;margin:0 0 7px;font-weight:700}
+.existing-parcel-lookup button{margin:10px 0;display:block}
+#existing-result{font-size:14px;min-height:24px}
+@media(max-width:550px){.live-inference{padding:18px}.live-api-config input{max-width:100%}}

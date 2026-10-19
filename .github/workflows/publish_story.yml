@@ -1,0 +1,141 @@
+name: Validate and publish model story
+
+on:
+  pull_request:
+    paths:
+      - "site/**"
+      - "deployment/**"
+      - "render.yaml"
+      - "tests/test_inference_contract.py"
+      - "scripts/check_inference_runtime.py"
+      - "scripts/export_reference26_browser.py"
+      - "tests/test_reference26_browser.cjs"
+      - "scripts/sync_story_data.py"
+      - "scripts/check_site_charts.py"
+      - "scripts/check_model_story.py"
+      - "tests/test_svg_charts.cjs"
+      - "tests/test_parcel_core.cjs"
+      - "scripts/check_new_research.py"
+      - "tests/test_story_site.py"
+      - ".github/workflows/publish_story.yml"
+      - "results/current_champions/v1/metrics.csv"
+      - "results/comparison_97_41/v1/metrics.csv"
+      - "README.md"
+  push:
+    branches: [main]
+    paths:
+      - "site/**"
+      - "deployment/model_artifacts/**"
+      - "scripts/export_reference26_browser.py"
+      - "tests/test_reference26_browser.cjs"
+      - "scripts/sync_story_data.py"
+      - "tests/test_story_site.py"
+      - ".github/workflows/publish_story.yml"
+      - "results/current_champions/v1/metrics.csv"
+      - "results/comparison_97_41/v1/metrics.csv"
+      - "README.md"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: story-pages-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact triggering revision
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Verify aggregate snapshot
+        run: python scripts/sync_story_data.py --check
+      - name: Check static site contract
+        run: python -m unittest discover -s tests -p 'test_story_site.py'
+      - name: Verify recovered interpretability evidence
+        run: python scripts/check_story_evidence.py
+      - name: Audit repository documentation and frozen model provenance
+        run: python scripts/520_validate_repository_documentation.py
+      - name: Verify the expanded statistical explanations
+        run: python scripts/check_new_research.py
+      - name: Verify published chart data
+        run: python scripts/check_site_charts.py
+      - name: Verify single-model description and all 26 features
+        run: python scripts/check_model_story.py
+      - name: Audit original Reference26 API and browser connector
+        run: python -m unittest discover -s tests -p 'test_inference_contract.py'
+      - name: Export authentic browser runtime and verify all 59 predictions
+        run: |
+          if [ -f deployment/model_artifacts/final_train138.joblib ] && \
+             [ -f deployment/model_artifacts/features197.parquet ] && \
+             [ -f deployment/model_artifacts/distance197.npy ]; then
+            python -m pip install -r deployment/requirements-api.txt
+            python scripts/export_reference26_browser.py
+            node --test tests/test_reference26_browser.cjs
+          else
+            echo "No binary assets yet. Browser inference stays disabled."
+            node --test tests/test_reference26_browser.cjs
+          fi
+      - name: Validate SVG chart rendering and data fidelity
+        run: node --test tests/test_svg_charts.cjs
+      - name: Check parcel arithmetic and percentage interpretation
+        run: node --test tests/test_parcel_core.cjs
+      - name: Validate JavaScript syntax
+        run: |
+          node --check site/charts.js
+          node --check site/model.js
+          node --check site/parcel_core.js
+          node --check site/predictor.js
+          node --check site/inference_client.js
+          node --check site/reference26_engine.js
+          node --check site/browser_inference.js
+
+  deploy:
+    needs: validate
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    steps:
+      - name: Checkout exact triggering revision
+        uses: actions/checkout@v4
+      - name: Set up Python to export browser model
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Build source-verified browser runtime if binary model assets are committed
+        run: |
+          if [ -f deployment/model_artifacts/final_train138.joblib ] && \
+             [ -f deployment/model_artifacts/features197.parquet ] && \
+             [ -f deployment/model_artifacts/distance197.npy ]; then
+            python -m pip install -r deployment/requirements-api.txt
+            python scripts/export_reference26_browser.py
+            node --test tests/test_reference26_browser.cjs
+          else
+            echo "Page without trained runtime: live buttons remain disabled."
+          fi
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+      - name: Stage only the single-model public page
+        run: |
+          mkdir -p _pages
+          cp -a site/. _pages/
+      - name: Upload public single-model site
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _pages
+      - name: Deploy site
+        id: deploy
+        uses: actions/deploy-pages@v4

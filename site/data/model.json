@@ -1,0 +1,302 @@
+{
+  "schema_version": 1,
+  "code_name": "Reference26",
+  "public_name": "Regresión local con mezcla geológica",
+  "features": [
+    {
+      "key": "clima",
+      "title": "Lluvia y vegetación del ciclo",
+      "count": 4,
+      "why": "Una estimación general del rendimiento a partir del ciclo de 2025.",
+      "features": [
+        {
+          "number": 1,
+          "name": "Lluvia acumulada",
+          "code": "compact_precip_total",
+          "how": "Suma de las precipitaciones de abril a octubre de 2025; milímetros.",
+          "interpret": "Se conservan como faltantes los meses no observados; no se supone lluvia cero."
+        },
+        {
+          "number": 2,
+          "name": "Fracción de lluvia al inicio",
+          "code": "compact_early_fraction",
+          "how": "Lluvia de abril a junio dividida entre la lluvia total más 10⁻⁶.",
+          "interpret": "Es una proporción, no un mes de siembra inferido."
+        },
+        {
+          "number": 3,
+          "name": "Concentración mensual de lluvia",
+          "code": "compact_concentration_hhi",
+          "how": "Suma de los cuadrados de las fracciones de lluvia de abril a octubre (HHI).",
+          "interpret": "Cerca de 1/7: lluvia uniforme; cerca de 1: concentrada en un mes."
+        },
+        {
+          "number": 4,
+          "name": "Verdor en mayo (NDVI)",
+          "code": "S2_ndvi_month_05",
+          "how": "Media de NDVI Sentinel-2 disponible en mayo de 2025.",
+          "interpret": "Índice espectral, no rendimiento observado."
+        }
+      ]
+    },
+    {
+      "key": "local",
+      "title": "Cambios de vegetación y relieve",
+      "count": 7,
+      "why": "Distingue parcelas cercanas con diferencias históricas, temporales y topográficas.",
+      "features": [
+        {
+          "number": 5,
+          "name": "Verdor histórico medio",
+          "code": "sat_basic_hist__sentinel_2__ndvi_promedio__mean",
+          "how": "Media de NDVI Sentinel-2 observado entre abril y octubre de 2022–2024.",
+          "interpret": "Agrupa capturas disponibles; no es necesariamente media de tres medias anuales."
+        },
+        {
+          "number": 6,
+          "name": "Variabilidad del verdor histórico",
+          "code": "sat_basic_hist__sentinel_2__ndvi_promedio__std",
+          "how": "Desviación estándar temporal de NDVI histórico en el mismo periodo.",
+          "interpret": "Mide variación de la serie disponible, no desviación de cosechas."
+        },
+        {
+          "number": 7,
+          "name": "Cambios de dirección del EVI",
+          "code": "emp_shape__y2025_planet_evi__turning_fraction",
+          "how": "Fracción de cambios de signo entre pendientes mensuales EVI Planet 2025.",
+          "interpret": "Resume forma de la trayectoria, sin diagnosticar una causa agronómica."
+        },
+        {
+          "number": 8,
+          "name": "Cambio de NDVI junio–agosto",
+          "code": "agro_pheno__y2025_planet_ndvi__jun_to_aug_delta",
+          "how": "NDVI Planet de agosto menos NDVI de junio de 2025.",
+          "interpret": "No equivale a una medición directa de crecimiento de biomasa."
+        },
+        {
+          "number": 9,
+          "name": "NDWI medio del ciclo",
+          "code": "sat_basic_2025__sentinel_2__ndwi_promedio__mean",
+          "how": "Promedio de NDWI Sentinel-2 disponible en abril–octubre de 2025.",
+          "interpret": "Señal espectral relacionada con agua/vegetación; no mide humedad del suelo directamente."
+        },
+        {
+          "number": 10,
+          "name": "Variabilidad de NDWI",
+          "code": "sat_basic_2025__sentinel_2__ndwi_promedio__std",
+          "how": "Desviación estándar temporal del NDWI Sentinel-2 durante 2025.",
+          "interpret": "Recupera variaciones que la media oculta."
+        },
+        {
+          "number": 11,
+          "name": "Pendiente media",
+          "code": "topo_official__slope__mean",
+          "how": "Media zonal de pendiente topográfica en grados, ráster INEGI de 120 m.",
+          "interpret": "No describe variaciones de relieve más finas que la fuente."
+        }
+      ]
+    },
+    {
+      "key": "ubicacion",
+      "title": "Ubicación para localizar vecinos",
+      "count": 2,
+      "why": "Las coordenadas seleccionan las parcelas de referencia; no alimentan por sí mismas una regresión mundial.",
+      "features": [
+        {
+          "number": 12,
+          "name": "Latitud del centroide",
+          "code": "base_centroid_lat",
+          "how": "Posición norte–sur del centro de la parcela.",
+          "interpret": "Se usa para ordenar vecinos por distancia geográfica."
+        },
+        {
+          "number": 13,
+          "name": "Longitud del centroide",
+          "code": "base_centroid_lon",
+          "how": "Posición este–oeste del centro de la parcela.",
+          "interpret": "Se usa junto con latitud; no se impone un límite municipal."
+        }
+      ]
+    },
+    {
+      "key": "geologia",
+      "title": "Composición geológica",
+      "count": 10,
+      "why": "Diez proporciones cartográficas agrupan terrenos semejantes con K-means y determinan el peso de mezcla.",
+      "features": [
+        {
+          "number": 14,
+          "name": "Proporción Q(B)",
+          "code": "geology_physiography::geo250_share__Q(B)",
+          "how": "Proporción cartográfica de esta clase geológica.",
+          "interpret": "Los códigos son los de la capa geológica; no significan por sí solos fertilidad."
+        },
+        {
+          "number": 15,
+          "name": "Proporción Q(B-Bvb)",
+          "code": "geology_physiography::geo250_share__Q(B-Bvb)",
+          "how": "Participación de esta clase en la superficie mapeada.",
+          "interpret": "Representa cobertura de la clase, no tipo de cultivo."
+        },
+        {
+          "number": 16,
+          "name": "Proporción Q(Bvb)",
+          "code": "geology_physiography::geo250_share__Q(Bvb)",
+          "how": "Participación de la clase Q(Bvb).",
+          "interpret": "Conserva el valor cero cuando la categoría no está presente."
+        },
+        {
+          "number": 17,
+          "name": "Proporción Q(al)",
+          "code": "geology_physiography::geo250_share__Q(al)",
+          "how": "Participación de la clase Q(al).",
+          "interpret": "No se convierte en una corrección directa al rendimiento."
+        },
+        {
+          "number": 18,
+          "name": "Proporción Ts(A)",
+          "code": "geology_physiography::geo250_share__Ts(A)",
+          "how": "Participación de la clase Ts(A).",
+          "interpret": "Se utiliza junto con las otras nueve proporciones."
+        },
+        {
+          "number": 19,
+          "name": "Proporción Ts(B)",
+          "code": "geology_physiography::geo250_share__Ts(B)",
+          "how": "Participación de la clase Ts(B).",
+          "interpret": "K-means agrupa las diez participaciones conjuntamente."
+        },
+        {
+          "number": 20,
+          "name": "Proporción Ts(R)",
+          "code": "geology_physiography::geo250_share__Ts(R)",
+          "how": "Participación de la clase Ts(R).",
+          "interpret": "La agrupación se aprende sin usar rendimientos para K-means."
+        },
+        {
+          "number": 21,
+          "name": "Proporción Ts(R-Ta)",
+          "code": "geology_physiography::geo250_share__Ts(R-Ta)",
+          "how": "Participación de la clase Ts(R-Ta).",
+          "interpret": "No equivale a límites administrativos."
+        },
+        {
+          "number": 22,
+          "name": "Proporción Ts(Ta)",
+          "code": "geology_physiography::geo250_share__Ts(Ta)",
+          "how": "Participación de la clase Ts(Ta).",
+          "interpret": "Las proporciones se transforman antes de K-means."
+        },
+        {
+          "number": 23,
+          "name": "Proporción Ts(Ti)",
+          "code": "geology_physiography::geo250_share__Ts(Ti)",
+          "how": "Participación de la clase Ts(Ti).",
+          "interpret": "Se conservan ceros, sin dividir por rareza de cada categoría."
+        }
+      ]
+    },
+    {
+      "key": "correccion",
+      "title": "Señales para corregir errores anteriores",
+      "count": 3,
+      "why": "Una Elastic Net aprende un ajuste acotado sobre errores del modelo base.",
+      "features": [
+        {
+          "number": 24,
+          "name": "Nivel histórico del NDVI mínimo",
+          "code": "I_history_ndvi_floor",
+          "how": "Medias de medianas mensuales de NDVI mínimo, mayo–octubre de 2022–2024.",
+          "interpret": "Requiere los 18 resúmenes mensuales históricos."
+        },
+        {
+          "number": 25,
+          "name": "Persistencia de brecha NDVI",
+          "code": "I_gap_excess_persistence",
+          "how": "Exceso positivo de brecha relativa (NDVI medio−mínimo), comparando mayo–octubre de 2025 con 2022–2024.",
+          "interpret": "El índice está entre 0 y 1; falta soporte si faltan los meses requeridos."
+        },
+        {
+          "number": 26,
+          "name": "Pendiente topográfica mínima",
+          "code": "I_slope_min",
+          "how": "Estadístico topográfico mínimo de la fuente TOPO_BASIC.",
+          "interpret": "No es la misma columna que la pendiente media del experto."
+        }
+      ]
+    }
+  ],
+  "final_fit": {
+    "known": 138,
+    "unknown": 59,
+    "local_neighbors": 24,
+    "local_ridge_alpha": 30,
+    "distance_power": 1,
+    "geologic_groups": 4,
+    "geologic_regularization": 20,
+    "ct3_alpha": 0.1,
+    "ct3_l1_ratio": 0.1,
+    "internal_alpha": 0.001,
+    "internal_l1_ratio": 0.9,
+    "internal_amplitude": 0.5,
+    "r3_alpha": 0.01,
+    "r3_l1_ratio": 0.5,
+    "r3_strength": 1,
+    "r3_limit": 0.25,
+    "r3_available": 51,
+    "r3_missing": 8,
+    "global_weight_anchor": 0.779654,
+    "cluster_weights": [
+      0.372869,
+      0.85558,
+      0.816305,
+      0.866107
+    ]
+  },
+  "selection": {
+    "climate_alpha": [
+      0.001,
+      0.01,
+      0.1,
+      1
+    ],
+    "climate_l1_ratio": [
+      0.1,
+      0.5,
+      0.9
+    ],
+    "internal_amplitude": [
+      0,
+      0.25,
+      0.5
+    ],
+    "geology_groups": [
+      4,
+      8
+    ],
+    "r3_strength": [
+      0,
+      0.5,
+      1
+    ],
+    "r3_fixed_alpha": 0.01,
+    "r3_fixed_l1_ratio": 0.5
+  },
+  "sources": [
+    "configs/current_champions_inputs.json",
+    "documentation/models/Reference26/README.md",
+    "results/current_champions_final/v1/README.md"
+  ],
+  "loocv": {
+    "name": "Validación dejando una parcela fuera (LOOCV)",
+    "model": "Reference26",
+    "folds": 138,
+    "training_labels_per_fold": 137,
+    "held_out_per_fold": 1,
+    "rmse_t_ha": 0.468186,
+    "r2_approx": 0.6952,
+    "mean_observed_t_ha": 3.9554,
+    "provenance": "Resultado confirmado y comunicado por el equipo el 19 de octubre de 2026; el repositorio público todavía no contiene la tabla de predicciones individuales de esta evaluación.",
+    "do_not_infer": "RMSE/mean is a scale comparison, not MAPE or an expected individual percentage error."
+  }
+}

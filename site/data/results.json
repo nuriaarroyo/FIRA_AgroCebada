@@ -1,0 +1,193 @@
+{
+  "schema_version": 1,
+  "units": "t/ha for RMSE and MAE; R² unitless",
+  "aggregation": "Mean per split/repeat; not pooled predictions across differing protocols",
+  "methodological_limit": "Exploratory. The same 138 reported yields were repeatedly studied; 59 hidden yields unavailable.",
+  "sources": [
+    "results/comparison_97_41/v1/metrics.csv",
+    "results/current_champions/v1/metrics.csv",
+    "README.md: Comparación reciente compatible, L40 / Local04D row"
+  ],
+  "protocols": [
+    {
+      "id": "fresh_97_41",
+      "description": "16 particiones de 97 parcelas de entrenamiento y 41 de evaluación. Promedio de RMSE por partición; reutiliza las mismas 138 etiquetas.",
+      "results": [
+        {
+          "id": "Reference26",
+          "rmse": 0.4624789693727327,
+          "r2": 0.6971349735771638,
+          "mae": 0.33866379623683796
+        },
+        {
+          "id": "Compact14",
+          "rmse": 0.46612826366718324,
+          "r2": 0.6933145908159207,
+          "mae": 0.3397922077298792
+        },
+        {
+          "id": "B1",
+          "rmse": 0.46218864182120445,
+          "r2": 0.697512656964062,
+          "mae": 0.3372528332650886
+        },
+        {
+          "id": "L40",
+          "rmse": 0.48930278500821417,
+          "r2": 0.6621362502710006,
+          "mae": 0.3552004385011348
+        },
+        {
+          "id": "CT3",
+          "rmse": 0.4917940186678773,
+          "r2": 0.6570708080795332,
+          "mae": 0.3641588233893805
+        }
+      ]
+    },
+    {
+      "id": "random",
+      "description": "50 folds aleatorios (10 repeticiones). Cada repetición reúne predicciones fuera de muestra sobre las 138 etiquetas; se promedian métricas por repetición.",
+      "results": [
+        {
+          "id": "Reference26",
+          "rmse": 0.47477745015740547,
+          "r2": 0.6864765957912468,
+          "mae": 0.339553516246131
+        },
+        {
+          "id": "Compact14",
+          "rmse": 0.4772911107490484,
+          "r2": 0.6831638273895824,
+          "mae": 0.3399223422658767
+        },
+        {
+          "id": "B1",
+          "rmse": 0.4754500275371741,
+          "r2": 0.6855779407422744,
+          "mae": 0.3395999710561607
+        },
+        {
+          "id": "L40",
+          "rmse": 0.493,
+          "r2": 0.6619,
+          "mae": null
+        },
+        {
+          "id": "CT3",
+          "rmse": 0.511581804125115,
+          "r2": 0.6360688921279908,
+          "mae": 0.3749476639489132
+        }
+      ]
+    },
+    {
+      "id": "climate_profile",
+      "description": "5 folds por perfil climático. Se excluyen perfiles para examinar diferencias en condiciones agroclimáticas; las métricas corresponden al protocolo original.",
+      "results": [
+        {
+          "id": "Reference26",
+          "rmse": 0.47744523541748995,
+          "r2": 0.6830560750395803,
+          "mae": 0.3341647921788003
+        },
+        {
+          "id": "Compact14",
+          "rmse": 0.47934260239680343,
+          "r2": 0.6805319998461077,
+          "mae": 0.33357233057052077
+        },
+        {
+          "id": "B1",
+          "rmse": 0.48390512604905145,
+          "r2": 0.6744214762322636,
+          "mae": 0.3407798539205123
+        },
+        {
+          "id": "L40",
+          "rmse": 0.5031,
+          "r2": 0.6481,
+          "mae": null
+        },
+        {
+          "id": "CT3",
+          "rmse": 0.5206039207674066,
+          "r2": 0.623165919166786,
+          "mae": 0.391501169976958
+        }
+      ]
+    },
+    {
+      "id": "municipality",
+      "description": "5 folds agrupados por municipio. Excluir municipios completos evalúa un tipo distinto de transferencia territorial.",
+      "results": [
+        {
+          "id": "Reference26",
+          "rmse": 0.5752208199125606,
+          "r2": 0.5399505689403998,
+          "mae": 0.4490591965726285
+        },
+        {
+          "id": "Compact14",
+          "rmse": 0.5754818806471708,
+          "r2": 0.5395328924870557,
+          "mae": 0.44677384120357844
+        },
+        {
+          "id": "B1",
+          "rmse": 0.5680563907958971,
+          "r2": 0.5513391191602179,
+          "mae": 0.4425712580732598
+        },
+        {
+          "id": "L40",
+          "rmse": 0.7602,
+          "r2": 0.1964,
+          "mae": null
+        },
+        {
+          "id": "CT3",
+          "rmse": 0.5812589187741983,
+          "r2": 0.530241590153209,
+          "mae": 0.4603291178320443
+        }
+      ]
+    },
+    {
+      "id": "spatial",
+      "description": "5 folds agrupados por bloques espaciales. Es un ensayo más estricto de transferencia a ubicaciones no representadas en el entrenamiento.",
+      "results": [
+        {
+          "id": "Reference26",
+          "rmse": 0.6333467976739242,
+          "r2": 0.44227711865013897,
+          "mae": 0.5003571962782715
+        },
+        {
+          "id": "Compact14",
+          "rmse": 0.6430669885588863,
+          "r2": 0.42502662274838643,
+          "mae": 0.5139642864269318
+        },
+        {
+          "id": "B1",
+          "rmse": 0.6813353272563853,
+          "r2": 0.35455815231963983,
+          "mae": 0.538839259116338
+        },
+        {
+          "id": "L40",
+          "rmse": 0.9794,
+          "r2": -0.3337,
+          "mae": null
+        },
+        {
+          "id": "CT3",
+          "rmse": 0.6787780469129576,
+          "r2": 0.35939417975395527,
+          "mae": 0.5306123586674012
+        }
+      ]
+    }
+  ]
+}
